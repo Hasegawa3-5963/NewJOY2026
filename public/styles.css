@@ -19,3 +19,9 @@
 .voice-card .voice-attr{color:var(--blue-dark);font-weight:700;margin-bottom:18px}
 .voice-card p.voice-body{color:var(--ink);margin:0 0 1em}
 @media(max-width:640px){.voice-card{padding:22px}.voice-card .voice-photos{grid-template-columns:1fr}}
+.story-section{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);padding:40px;max-width:900px;margin:0 auto}
+.story-section p{margin-bottom:1em;color:var(--ink)}
+.story-section .story-cite{font-size:13px;color:var(--muted);margin-bottom:24px}
+.media-list{max-width:800px;margin:0 auto 32px;text-align:center;color:var(--muted)}
+.media-video{max-width:640px;margin:0 auto}
+.media-video iframe{width:100%;aspect-ratio:16/9;border:0;border-radius:var(--radius);box-shadow:var(--shadow)}
