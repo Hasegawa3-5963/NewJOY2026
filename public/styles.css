@@ -53,8 +53,12 @@
 .rental-hero-text h1{color:#fff;font-size:56px;line-height:1;margin:0 0 8px}
 .rental-hero-text h1 small{display:block;font-size:16px;font-weight:400;margin-top:6px}
 .rental-hero-text .rental-hero-sub{color:#fff;font-size:24px;font-weight:700;margin:0}
-.rental-hero-collage{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr}
-.rental-hero-collage img{width:100%;height:100%;object-fit:cover;display:block}
+.rental-hero-collage{position:relative;overflow:hidden;min-height:320px}
+.rental-hero-collage img{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  opacity:0;transition:opacity 1.2s ease;
+}
+.rental-hero-collage img.active{opacity:1}
 @media(max-width:900px){
   .rental-hero-inner{grid-template-columns:1fr}
   .rental-hero-text{padding:40px 24px}

@@ -5,10 +5,12 @@
     <p class="rental-hero-sub">レンタルサービス</p>
   </div>
   <div class="rental-hero-collage">
-    <img src="/assets/voices/asahikawa-family-okinawa.webp" alt="観光地でJOYカートを利用する様子">
-    <img src="/assets/voices/kobe-mother.webp" alt="歩道でJOYカートを利用する様子">
-    <img src="/assets/scene-escalator-real.webp" alt="施設内でJOYカートを利用する様子">
-    <img src="/assets/scene-couple-real.webp" alt="仲間とJOYカートで出かける様子">
+    <img src="/assets/rental-carousel/frame-021.webp" alt="JOYカート利用シーン集合写真1" class="active">
+    <img src="/assets/rental-carousel/frame-022.webp" alt="JOYカート利用シーン集合写真2">
+    <img src="/assets/rental-carousel/frame-023.webp" alt="JOYカート利用シーン集合写真3">
+    <img src="/assets/rental-carousel/frame-024.webp" alt="JOYカート利用シーン集合写真4">
+    <img src="/assets/rental-carousel/frame-025.webp" alt="JOYカート利用シーン集合写真5">
+    <img src="/assets/rental-carousel/frame-026.webp" alt="JOYカート利用シーン集合写真6">
   </div>
 </div></section>
 <section class="section"><div class="container" style="text-align:center"><p style="font-size:18px">ホテルから観光地への移動や施設内の移動など、<br>さまざまな旅行シーンでJOYカートが活躍します。</p></div></section>
@@ -102,6 +104,17 @@
 <div class="copyright">©NOAA Co.,Ltd.</div>
 </div></footer>
 <script>
+(function(){
+  var slides = document.querySelectorAll('.rental-hero-collage img');
+  if(slides.length){
+    var i = 0;
+    setInterval(function(){
+      slides[i].classList.remove('active');
+      i = (i + 1) % slides.length;
+      slides[i].classList.add('active');
+    }, 4000);
+  }
+})();
 (function(){
   var tabs = document.querySelectorAll('.manual-tab');
   var panels = document.querySelectorAll('.manual-panel');
