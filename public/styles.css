@@ -40,3 +40,9 @@
 .footer-bottom .footer-links{display:flex;gap:24px;margin-bottom:14px}
 .footer-bottom .footer-links a{color:var(--muted);font-size:14px}
 .footer-bottom .copyright{color:var(--muted);font-size:13px}
+.policy-box{border:1px solid var(--line);border-radius:12px;padding:20px;max-height:220px;overflow-y:auto;background:var(--cream);font-size:13px;color:var(--muted);margin-top:10px}
+.policy-box h5{text-align:center;color:var(--ink);margin:0 0 12px}
+.policy-box p{margin-bottom:12px;line-height:1.7}
+.check-row{display:flex;align-items:flex-start;gap:10px;margin-top:14px}
+.check-row input{width:18px;height:18px;margin-top:2px;flex-shrink:0}
+.check-row label{font-weight:400;font-size:14px}
