@@ -23,17 +23,23 @@ export async function onRequestPost(context) {
 
   const name = (data.name || "").trim();
   const email = (data.email || "").trim();
+  const tel = (data.tel || "").trim();
+  const mobile = (data.mobile || "").trim();
+  const region = (data.region || "").trim();
   const message = (data.message || "").trim();
   const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
-  if (!name || !emailOk || !message) {
+  if (!name || !emailOk || !tel || !region || !message) {
     return new Response(JSON.stringify({ error: "invalid input" }), { status: 400 });
   }
 
   const bodyText =
-    "お名前: " + name + "\r\n" +
-    "メールアドレス: " + email + "\r\n\r\n" +
-    "お問い合わせ内容:\r\n" + message;
+    "氏名: " + name + "\r\n" +
+    "メールアドレス: " + email + "\r\n" +
+    "お電話番号: " + tel + "\r\n" +
+    "携帯番号: " + (mobile || "（未入力）") + "\r\n" +
+    "お住まい地域: " + region + "\r\n\r\n" +
+    "メッセージ:\r\n" + message;
 
   const raw =
     `From: ${env.CONTACT_FROM_ADDRESS}\r\n` +
