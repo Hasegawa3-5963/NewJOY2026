@@ -25,3 +25,18 @@
 .media-list{max-width:800px;margin:0 auto 32px;text-align:center;color:var(--muted)}
 .media-video{max-width:640px;margin:0 auto}
 .media-video iframe{width:100%;aspect-ratio:16/9;border:0;border-radius:var(--radius);box-shadow:var(--shadow)}
+.cta-band{background:#111;padding:56px 24px;text-align:center}
+.cta-band p{color:#fff;font-size:20px;font-weight:700;margin:0 0 20px}
+.cta-band .button-pill{display:inline-block;background:#fff;color:#111;font-weight:700;padding:16px 40px;border-radius:999px}
+.follow-us{background:#eef1f2;padding:40px 24px;text-align:center}
+.follow-us p{color:var(--muted);font-weight:700;letter-spacing:.05em;margin:0 0 18px}
+.follow-us .social-icons{display:flex;justify-content:center;gap:22px}
+.follow-us .social-icons a{width:44px;height:44px;border-radius:50%;background:#111;display:flex;align-items:center;justify-content:center}
+.follow-us .social-icons svg{width:22px;height:22px;fill:#fff}
+.footer-bottom{max-width:1100px;margin:0 auto;padding:40px 24px}
+.footer-bottom .footer-logo{height:24px;margin-bottom:14px}
+.footer-bottom p{margin:0 0 4px;color:var(--ink);font-weight:700}
+.footer-bottom .footer-address{color:var(--muted);font-weight:400;margin-bottom:20px}
+.footer-bottom .footer-links{display:flex;gap:24px;margin-bottom:14px}
+.footer-bottom .footer-links a{color:var(--muted);font-size:14px}
+.footer-bottom .copyright{color:var(--muted);font-size:13px}
