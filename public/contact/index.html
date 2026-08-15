@@ -1,0 +1,66 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>お問い合わせ｜NOAA</title><meta name="description" content="株式会社NOAAへのお問い合わせ窓口です。"><link rel="canonical" href="https://noaa.jp/contact/"><meta property="og:type" content="website"><meta property="og:title" content="お問い合わせ｜NOAA"><meta property="og:description" content="株式会社NOAAへのお問い合わせ窓口です。"><meta property="og:url" content="https://noaa.jp/contact/"><meta property="og:image" content="https://noaa.jp/assets/hero-joycart.jpg"><link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/styles.css"><script src="/site.js" defer></script><style>
+.contact-form{max-width:640px}
+.contact-form .field{margin-bottom:22px}
+.contact-form label{display:block;font-weight:700;font-size:14px;margin-bottom:8px}
+.contact-form input,.contact-form textarea{width:100%;padding:14px 16px;border:1px solid var(--line);border-radius:12px;font:inherit;color:var(--ink)}
+.contact-form textarea{min-height:150px;resize:vertical}
+.contact-form input:focus,.contact-form textarea:focus{outline:2px solid var(--blue);border-color:var(--blue)}
+.contact-form .error{color:var(--orange);font-size:13px;margin-top:6px;display:none}
+.contact-form button{border:0;cursor:pointer}
+#contact-status{margin-top:18px;font-size:14px;color:var(--muted)}
+</style></head><body><header class="site-header"><div class="header-inner"><a class="brand" href="/" aria-label="NOAA トップ"><img src="/assets/joycart-logo.png" alt="JOYcart"><span>株式会社NOAA</span></a><button class="menu-button" type="button" aria-label="メニューを開く" aria-expanded="false"><span></span><span></span><span></span></button><nav class="global-nav" aria-label="メインメニュー"><a href="/product/">製品紹介</a><a href="/rental/">レンタル</a><a href="/support/">サポート</a><a href="/faq/">よくある質問</a><a href="/news/">お知らせ</a><a href="/company/">会社概要</a><a class="nav-contact" href="/contact/">お問い合わせ</a></nav></div></header><main><section class="page-hero"><div class="container"><p class="eyebrow">CONTACT</p><h1>お問い合わせ</h1><p>ご質問・ご相談は、下記フォームまたはお電話でお気軽にどうぞ。</p></div></section>
+<section class="section"><div class="container">
+  <form class="contact-form" id="contact-form" novalidate>
+    <div class="field">
+      <label for="name">お名前</label>
+      <input type="text" id="name" name="name" autocomplete="name">
+      <p class="error" id="name-error">お名前を入力してください</p>
+    </div>
+    <div class="field">
+      <label for="email">メールアドレス</label>
+      <input type="email" id="email" name="email" autocomplete="email">
+      <p class="error" id="email-error">正しいメールアドレスを入力してください</p>
+    </div>
+    <div class="field">
+      <label for="message">お問い合わせ内容</label>
+      <textarea id="message" name="message"></textarea>
+      <p class="error" id="message-error">お問い合わせ内容を入力してください</p>
+    </div>
+    <button type="submit" class="button" id="submit-btn">送信する</button>
+    <p id="contact-status"></p>
+  </form>
+</div></section>
+<section class="section soft"><div class="container contact-panel"><div><h2>お電話でのご相談</h2><p>平日 9:00〜17:00（土日祝休）</p></div><a class="phone-link" href="tel:0353569333">03-5356-9333</a></div></section>
+<script>
+(function(){
+  var form = document.getElementById('contact-form');
+  var status = document.getElementById('contact-status');
+  var btn = document.getElementById('submit-btn');
+  function showError(field, show){
+    document.getElementById(field + '-error').style.display = show ? 'block' : 'none';
+  }
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var name = document.getElementById('name').value.trim();
+    var email = document.getElementById('email').value.trim();
+    var message = document.getElementById('message').value.trim();
+    var emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    showError('name', !name);
+    showError('email', !emailOk);
+    showError('message', !message);
+    if(!name || !emailOk || !message){ status.textContent=''; return; }
+    btn.disabled = true;
+    status.textContent = '送信中…';
+    fetch('/api/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name: name, email: email, message: message })
+    })
+    .then(function(r){ if(!r.ok){ throw new Error('failed'); } return r.json(); })
+    .then(function(){ status.textContent = 'お問い合わせを送信しました。'; form.reset(); })
+    .catch(function(){ status.textContent = '送信に失敗しました。時間をおいて再度お試しください。'; })
+    .finally(function(){ btn.disabled = false; });
+  });
+})();
+</script>
+</main><footer class="site-footer"><div class="footer-inner"><div><img class="footer-logo" src="/assets/joycart-logo.png" alt="JOYcart"><p>株式会社NOAA</p><p>ラストハーフマイルの移動支援</p></div><div class="footer-links"><a href="/product/">製品紹介</a><a href="/rental/">レンタル</a><a href="/support/">サポート</a><a href="/news/">お知らせ</a><a href="/company/">会社概要</a><a href="/privacypolicy/">プライバシーポリシー</a></div><div class="footer-contact"><small>お電話でのご相談</small><a href="tel:0353569333">03-5356-9333</a><small>平日 9:00〜17:00（土日祝休）</small></div></div><div class="copyright">© NOAA Co., Ltd.</div></footer></body></html>

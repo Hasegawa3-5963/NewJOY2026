@@ -1,0 +1,8 @@
+/news----/* /news/posts/:splat 301
+/news/posts-1/* /news/posts/:splat 301
+/news/tags/* /news/ 301
+/newsrelease /news/ 301
+/product/accordionsample /product/ 301
+/rental-palmroyal /rental/ 301
+/rental-palmroyal_en /rental/en/ 301
+/contact/kounyu /contact/ 302

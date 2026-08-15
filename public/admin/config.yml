@@ -1,0 +1,35 @@
+backend:
+  name: github
+  repo: YOUR_GITHUB_USERNAME/YOUR_REPO_NAME
+  branch: main
+  base_url: https://YOUR_OAUTH_WORKER.example.workers.dev
+
+media_folder: "luce/images"
+public_folder: "/luce/images"
+
+collections:
+  - name: "news"
+    label: "お知らせ"
+    files:
+      - name: "news"
+        label: "お知らせ一覧"
+        file: "content/news.json"
+        fields:
+          - { name: "items", label: "お知らせ", widget: "list", label_singular: "お知らせ1件", fields: [
+              { name: "date", label: "日付", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false },
+              { name: "title", label: "タイトル", widget: "string" },
+              { name: "body", label: "本文", widget: "text" },
+            ] }
+
+  - name: "voices"
+    label: "ユーザーの声"
+    files:
+      - name: "voices"
+        label: "ユーザーの声一覧"
+        file: "content/voices.json"
+        fields:
+          - { name: "items", label: "声", widget: "list", label_singular: "声1件", fields: [
+              { name: "date", label: "日付", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false },
+              { name: "name", label: "投稿者（属性など）", widget: "string" },
+              { name: "body", label: "内容", widget: "text" },
+            ] }
