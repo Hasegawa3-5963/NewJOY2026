@@ -41,13 +41,27 @@
       <textarea id="message" name="message" placeholder="お問い合わせ内容を入力してください"></textarea>
       <p class="error" id="message-error">メッセージを入力してください</p>
     </div>
-    <div class="field" style="display:flex;align-items:flex-start;gap:10px">
-      <input type="checkbox" id="agree" name="agree" style="width:18px;height:18px;margin-top:3px">
-      <label for="agree" style="font-weight:400">
-        <a href="/privacypolicy/" target="_blank">プライバシーポリシー</a>の内容を確認し同意します *
-      </label>
+    <div class="field">
+      <label>個人情報の取扱規程 *</label>
+      <div class="policy-box">
+        <h5>プライバシーポリシー</h5>
+        <p><strong>■個人情報の管理を徹底しております</strong><br>当サイトは、お客様からお預かりしている個人情報を破壊、紛失、不正流失、改ざん、また不正アクセス等から保護し、合理的な範囲内で安全対策に努めています。またお客様の意志を尊重し、お客様からの申し出により、内容確認、修正、更新、削除をさせていただいております。</p>
+        <p><strong>■個人情報のお客様からのご提供について</strong><br>当サイト提供するサービスを利用していただくことにおいて、当サイトは必要に応じ、お客様から個人情報を提供していただくことがあります。その場合、お客様がお客様自身の個人情報の提供をされるか否かは、お客様自身のご判断によるものとなります。尚、お客様からの個人情報をご提供頂けない場合、当サイトのサービスや問い合わせ等に関し、お応えできかねる場合もございます。</p>
+        <p><strong>■個人情報の開示についてのお約束預託</strong><br>当サイトのお預かりしているお客様の個人情報について以下の場合を除き、第三者への開示はいたしません。<br>1. お客様自身の同意がある場合<br>2. お客様個人を特定できない状態で開示する場合<br>3. 当サイトがお客様からの問い合わせ内容やお申込み内容によるサービスを提供する第三機関 への開示の場合<br>4. 法令により必要と判断される場合</p>
+        <p><strong>■個人情報の廃棄について</strong><br>当サイトがお客様からいただいた個人情報は以下の場合、再生不可能な形で廃棄させていただきます。<br>1. 利用目的と照らし合わせ、今後も使われることがないと当社が判断した場合<br>2. お客様自身より廃棄の申し出があった場合</p>
+        <p><strong>■その他</strong><br>当ウェブサイト上には当サイト以外の第三者が管理するウェブサイトへのリンクが含まれています。これら第三者が管理するウェブサイトにおける個人情報の取り扱いにつきまして当サイトは責任を負いません。<br>当サイトの裁量により、必要に応じて本規定を変更、修正、追加、または削除することがある事をご了承下さい。内容のご確認についてはその都度お問い合せ下さい。</p>
+      </div>
+      <div class="check-row">
+        <input type="checkbox" id="agree" name="agree">
+        <label for="agree">プライバシーポリシーの内容を確認し同意します *</label>
+      </div>
+      <p class="error" id="agree-error">プライバシーポリシーへの同意が必要です</p>
+      <div class="check-row">
+        <input type="checkbox" id="confirm" name="confirm">
+        <label for="confirm">入力内容に問題ありません *</label>
+      </div>
+      <p class="error" id="confirm-error">入力内容の確認チェックが必要です</p>
     </div>
-    <p class="error" id="agree-error">プライバシーポリシーへの同意が必要です</p>
     <button type="submit" class="button" id="submit-btn">送信</button>
     <p id="contact-status"></p>
   </form>
@@ -70,6 +84,7 @@
     var region = document.getElementById('region').value.trim();
     var message = document.getElementById('message').value.trim();
     var agree = document.getElementById('agree').checked;
+    var confirmed = document.getElementById('confirm').checked;
     var emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
     showError('name', !name);
     showError('email', !emailOk);
@@ -77,7 +92,8 @@
     showError('region', !region);
     showError('message', !message);
     showError('agree', !agree);
-    if(!name || !emailOk || !tel || !region || !message || !agree){ status.textContent=''; return; }
+    showError('confirm', !confirmed);
+    if(!name || !emailOk || !tel || !region || !message || !agree || !confirmed){ status.textContent=''; return; }
     btn.disabled = true;
     status.textContent = '送信中…';
     fetch('/api/contact', {
