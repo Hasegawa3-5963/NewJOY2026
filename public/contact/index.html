@@ -2,7 +2,9 @@
 .contact-form{max-width:640px}
 .contact-form .field{margin-bottom:22px}
 .contact-form label{display:block;font-weight:700;font-size:14px;margin-bottom:8px}
-.contact-form input,.contact-form textarea{width:100%;padding:14px 16px;border:1px solid var(--line);border-radius:12px;font:inherit;color:var(--ink)}
+.contact-form input:not([type="checkbox"]),.contact-form textarea{width:100%;padding:14px 16px;border:1px solid var(--line);border-radius:12px;font:inherit;color:var(--ink)}
+.contact-form input[type="checkbox"]{width:18px;height:18px;flex-shrink:0;accent-color:var(--blue-dark)}
+.contact-form .check-row label{display:inline;font-weight:400;margin-bottom:0}
 .contact-form textarea{min-height:150px;resize:vertical}
 .contact-form input:focus,.contact-form textarea:focus{outline:2px solid var(--blue);border-color:var(--blue)}
 .contact-form .error{color:var(--orange);font-size:13px;margin-top:6px;display:none}
