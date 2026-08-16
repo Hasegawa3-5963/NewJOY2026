@@ -33,8 +33,7 @@
 .follow-us .social-icons{display:flex;justify-content:center;gap:22px}
 .follow-us .social-icons a{width:44px;height:44px;border-radius:50%;background:#111;display:flex;align-items:center;justify-content:center}
 .follow-us .social-icons svg{width:22px;height:22px;fill:#fff}
-.footer-bottom{max-width:1100px;margin:0 auto;padding:28px 24px 8px}
-.footer-bottom .footer-logo{height:26px;margin-bottom:12px;filter:brightness(0) invert(1)}
+.footer-bottom{max-width:1100px;margin:0 auto;padding:22px 24px 8px}
 .footer-bottom p{margin:0 0 4px;color:#fff;font-weight:700}
 .footer-bottom .footer-address{color:#9fb1b9;font-weight:400;margin-bottom:14px}
 .footer-bottom .footer-links{display:flex;gap:24px;margin-bottom:10px}
